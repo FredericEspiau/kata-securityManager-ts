@@ -4,7 +4,6 @@
   "description": "Base for testing with Jest and TS",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "test": "xo && jest"
   },
   "repository": {
     "type": "git",
