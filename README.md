@@ -2,6 +2,16 @@
 
 The goal here is to refactor this codebase
 
+# What is refactoring ?
+
+It means `changing the codebase without impacting the observable behaviours`
+
+For example:
+
+- if the execution crashes for one input, after refactoring the execution should still crash for this input
+- if the execution write something in the console, the formatting should still be the same in the console
+- if someone imports my project in another project, his or her project should still work after the refactoring
+
 # What are the issues ?
 
 - Tests
@@ -23,6 +33,32 @@ The password security is not really strong enough, could you make it more secure
 This codebase is not really idiomatic TypeScript, do you think you could make it more idiomatic ?
 
 This means that usually, a codebase written in TypeScript shouldn't look like this
+
+## What is an implicit dependency ?
+
+```ts
+function updateUser(string newName) {
+    this.name = newName; // explicit dependency
+    this.modificationDate = Date.now(); // implicit dependency
+}
+``` 
+
+An explicit dependency is a dependency passed as argument in a function or a class
+An implicit dependency is not passed as argument, thus you can't know your function or class has this dependency only by looking at it's signature
+
+```ts
+import { tokenGenerator } from '@myCompany/token-generator';
+
+class UserUpdater {
+
+    constructor(
+        private repository: UserRepository, // explicit dependency
+    ) {
+        this.token = tokenGenerator(); // implicit dependency
+    }
+
+}
+```
 
 # Source
 

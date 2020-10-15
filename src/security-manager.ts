@@ -3,10 +3,14 @@ import promptSync from "prompt-sync";
 export default class SecurityManager {
   public static createUser() {
     var prompt = promptSync();
-    var username = prompt("Enter a username");
-    var fullName = prompt("Enter your full name");
-    var password = prompt("Enter your password");
-    var confirmPassword = prompt("Re-enter your password");
+    console.log("Enter a username");
+    var username = prompt('');
+    console.log("Enter your full name");
+    var fullName = prompt("");
+    console.log("Enter your password");
+    var password = prompt("");
+    console.log("Re-enter your password");
+    var confirmPassword = prompt("");
 
     if (password != confirmPassword) {
       console.log("The passwords don't match");
